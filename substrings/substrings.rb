@@ -1,14 +1,17 @@
+
 dictionary = ["below","down","go","going","horn","how","howdy","it","i","low","own","part","partner","sit"]
 
 def substrings(string, dictionary)
+  result = Hash.new(0)
   string_arr = string.split
-  string_arr.reduce(Hash.new{0}) do |result, word|
-    dictionary.each do |value|
-      next unless value.include?(word)
-      result[word] +=1
-      result
+  string_arr.each do |match|
+    dictionary.each do |word|
+      if match.include?(word)
+        result[word] += 1
+      end
     end
   end
+  result 
 end
 
-substrings("Howdy partner, sit down! How's it going?", dictionary)
+p substrings("Howdy partner, sit down! How's it going?", dictionary)
